@@ -20,6 +20,6 @@
 #### Terminal commands
 
 * Initiate watch: `grunt watch`.
-* Compile less: `grunt less`
+* Compile sass/scss: `grunt sass`
 * Uglify js: `grunt uglify`
 * Combine and minify css: `grunt cssmin`
