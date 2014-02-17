@@ -1,0 +1,9 @@
+//Import the variables partial
+@import "variables";
+
+.someClass {
+  background-color: #000;
+  .anotherClass {
+    color: #000;
+  }
+}

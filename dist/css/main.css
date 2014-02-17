@@ -1,0 +1,6 @@
+.someClass {
+  background-color: #000;
+}
+.someClass .anotherClass {
+  color: #000;
+}
