@@ -1,5 +1,6 @@
 {
-  "name": "ghost-theming-package",
+  "name": "solo",
+  "ghostinstall": "../Ghost/",
   "version": "1.0.0",
   "devDependencies": {
     "grunt": "~0.4.2",
