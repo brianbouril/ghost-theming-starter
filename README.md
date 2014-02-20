@@ -19,7 +19,7 @@
 
 #### Terminal commands
 
-* Initiate watch: `grunt watch`.
+* Initiate watch: `grunt watch`
 * Compile sass/scss: `grunt sass`
 * Uglify js: `grunt uglify`
 * Combine and minify css: `grunt cssmin`

@@ -5,16 +5,19 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
+    theme: './theme',
+    assets: '<%= theme %>/assets',
+
     watch: {
       sass: {
         files: [
-        'sass/*'
+        '<%= assets %>/sass/*'
         ],
         tasks: ['sass']
       },
       css: {
         files: [
-        'dist/css/*'
+        './.tmp/css/style.css'
         ],
         tasks: ['cssmin']
       },
@@ -41,14 +44,13 @@ module.exports = function(grunt) {
       }
     },
 
-    //switch to sass contrib
     sass: {
       dist: {
         options: {
           style: 'expanded'
         },
         files: {
-          'dist/css/main.css': 'sass/main.scss'
+          './.tmp/css/style.css': '<%= assets %>/sass/style.scss'
         }
       }
     },
@@ -56,7 +58,7 @@ module.exports = function(grunt) {
     cssmin: {
       combine: {
         files: {
-          '<%= ghost_theme_location %>/assets/css/style.css': ['bower_components/normalize-css/normalize.css', 'dist/css/main.css']
+          '<%= ghost_theme_location %>/assets/css/style.css': ['bower_components/normalize-css/normalize.css', '.tmp/css/style.css']
         }
       }
     },
@@ -70,6 +72,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-copy'); // ADD copying of new or changed html files to ghost destination
+  grunt.loadNpmTasks('grunt-contrib-clean'); // ADD watch for single file deletion and clean that file from the destination
 
   grunt.registerTask('default', ['watch']);
 

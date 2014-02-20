@@ -1,0 +1,51 @@
+{{!< default}}
+
+{{> header}}
+
+<main class="main_solo" role="main">
+{{#post}}
+<article class="article_solo" role="article" itemscope itemtype="http://schema.org/Article">
+<header class="postheader_solo">
+<time class="date_solo" datetime="{{date format="YYYY-MM-DD"}}" itemprop="datePublished">{{date format='dddd DD MMM YYYY'}}</time>
+<h1 class="posttitle_solo" itemprop="headline">{{title}}</h1>
+</header>
+<div class="postcontent_solo" itemprop="articleBody">
+{{content}}
+</div>
+{{#if tags}}
+<div class="posttags_solo">
+Tags: {{tags separator=" | "}}
+</div>
+{{/if}}
+    <div class="sharepost_solo">
+    <h4 class="share_solo">Share this post: &nbsp;</h4>
+    <a class="share_solo icon-twitter" target="_blank" href="http://twitter.com/share?text={{title}}&url={{url absolute="true"}}"><span class="hidethis_solo">Twitter</span></a>
+    <a class="share_solo icon-facebook" target="_blank" href="http://www.facebook.com/sharer.php?u={{url absolute="true"}}"><span class="hidethis_solo">Facebook</span></a>
+    <a class="share_solo icon-gplus" target="_blank" href="https://plus.google.com/share?url={{url absolute="true"}}"><span class="hidethis_solo">Google+</span></a>
+    </div>
+        {{#if author}}
+        <footer class="postfooter_solo">
+        <address itemscope itemtype="http://schema.org/Person">
+        {{#if author.image}}
+        <div class="authorimage_solo"><img src="{{author.image}}" itemprop="image" /></div>
+        {{/if}}
+        <h4 class="authorname_solo"><span itemprop="author">{{author.name}}</span></h4>
+        {{#if author.website}}
+        <div class="authorwebsite_solo"><a href="{{author.website}}" itemprop="url">{{author.website}}</a></div>
+        {{/if}}
+        </address>
+        <div class="authorbio_solo">
+        <p>{{author.bio}}</p>
+        </div>
+        </footer>
+        {{/if}}
+</article>
+{{/post}}
+{{#if pagination}}
+<div class="pagination_solo">
+{{{pagination}}}
+</div>
+{{/if}}
+</main>
+
+{{> footer}}
