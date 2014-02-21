@@ -5,29 +5,10 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
+    'ghost_theme_location': '<%= pkg.ghostinstall %>content/themes/<%= pkg.name %>',
+
     theme: './theme',
     assets: '<%= theme %>/assets',
-
-    watch: {
-      sass: {
-        files: [
-        '<%= assets %>/sass/*'
-        ],
-        tasks: ['sass']
-      },
-      css: {
-        files: [
-        './.tmp/css/style.css'
-        ],
-        tasks: ['cssmin']
-      },
-      ghostcss: {
-        files: [
-        '<%= ghost_theme_location %>/assets/css/*'
-        ],
-        tasks: ['reload']
-      }
-    },
 
     uglify: {
       options: {
@@ -63,7 +44,65 @@ module.exports = function(grunt) {
       }
     },
 
-    'ghost_theme_location': '<%= pkg.ghostinstall %>content/themes/<%= pkg.name %>'
+    copy: {
+      dev: {
+        files: [
+          {expand: true, cwd: './theme', src:['**/*.hbs'], dest: '<%= ghost_theme_location %>'}
+        ]
+      }
+    },
+
+    clean: {
+      options: {
+        force: true
+      },
+      dev: {
+        src: ['<%= ghost_theme_location %>/**/*.hbs']    // Changed this from static_src to static
+      }
+    },
+
+    watch: {
+      html: {
+        files: [
+        '<%= theme %>/*.hbs'
+        ],
+        tasks: ['sass']
+      },
+      sass: {
+        files: [
+        '<%= assets %>/sass/*'
+        ],
+        tasks: ['sass']
+      },
+      css: {
+        files: [
+        './.tmp/css/style.css'
+        ],
+        tasks: ['cssmin']
+      },
+      reload: {
+        files: [
+        '<%= ghost_theme_location %>/**'
+        ],
+        tasks: ['reload']
+      },
+      copy: {
+        files: ['<%= theme %>/**/*.hbs'],
+        tasks: ['copy'],
+        options: {
+          event: ['added', 'changed'],
+        }
+      },
+      remove: {
+        files: ['<%= theme %>/**/*.hbs'],
+        tasks: ['clean', 'copy'],    // Added copy task after clean
+        options: {
+          event: ['deleted']
+        }
+      }
+    }
+
+    
 
   });
 
