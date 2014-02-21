@@ -23,3 +23,6 @@
 * Compile sass/scss: `grunt sass`
 * Uglify js: `grunt uglify`
 * Combine and minify css: `grunt cssmin`
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/brianbouril/ghost-and-bones/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
