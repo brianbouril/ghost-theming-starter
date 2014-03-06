@@ -25,4 +25,3 @@
 * Combine and minify css: `grunt cssmin`
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/brianbouril/ghost-theming-starter/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
