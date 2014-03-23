@@ -12,7 +12,7 @@
 1. From a console / terminal, cd to the root folder of the project
 2. Run `npm install`
 3. Run `bower install`
-4. Install Ghost locally next to this project in the same root directory. ( http://docs.ghost.org/installation/ )
+4. Install Ghost locally next to this project in the same parent directory. ( http://docs.ghost.org/installation/ )
 5. In Gruntfile.js set values for `ghost_location` and `ghost_theme_name` 
 
 
